@@ -7,3 +7,5 @@ COPY print.R /root/print.R
 
 RUN apt-get update
 RUN apt-get install gfortran -yy
+
+RUN Rscript print.R
