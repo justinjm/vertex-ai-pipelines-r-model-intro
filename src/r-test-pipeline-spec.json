@@ -101,7 +101,7 @@
                 "base_output_directory": {
                   "runtimeValue": {
                     "constantValue": {
-                      "stringValue": ""
+                      "stringValue": "gs://demos-vertex-ai-aip-r-test20221109165545/pipeline_root/r-test/20221109165545"
                     }
                   }
                 },
@@ -192,7 +192,7 @@
                 "worker_pool_specs": {
                   "runtimeValue": {
                     "constantValue": {
-                      "stringValue": "[{\"containerSpec\": {\"imageUri\": \"us-central1-docker.pkg.dev/demos-vertex-ai/r-test-repo/r-test-image:latest\"}, \"replicaCount\": \"1\", \"machineSpec\": {\"machineType\": \"n1-standard-16\"}}]"
+                      "stringValue": "[{\"containerSpec\": {\"imageUri\": \"us-central1-docker.pkg.dev/demos-vertex-ai/r-test-repo/r-test-image:latest\", \"command\": [\"Rscript\", \"print.R\"]}, \"replicaCount\": \"1\", \"machineSpec\": {\"machineType\": \"n1-standard-16\"}}]"
                     }
                   }
                 }
