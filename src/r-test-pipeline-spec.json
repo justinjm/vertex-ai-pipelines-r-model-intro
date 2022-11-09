@@ -1,0 +1,96 @@
+{
+  "pipelineSpec": {
+    "components": {
+      "comp-customcontainertrainingjob-run": {
+        "executorLabel": "exec-customcontainertrainingjob-run",
+        "inputDefinitions": {
+          "parameters": {
+            "command": {
+              "type": "STRING"
+            }
+          }
+        },
+        "outputDefinitions": {
+          "artifacts": {
+            "model": {
+              "artifactType": {
+                "schemaTitle": "google.VertexModel",
+                "schemaVersion": "0.0.1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "deploymentSpec": {
+      "executors": {
+        "exec-customcontainertrainingjob-run": {
+          "container": {
+            "args": [
+              "--init.project",
+              "demos-vertex-ai",
+              "--init.location",
+              "us-central1",
+              "--init.display_name",
+              "Run R script",
+              "--init.container_uri",
+              "us-central1-docker.pkg.dev/demos-vertex-ai/r-test-repo/r-test-image:latest",
+              "--init.staging_bucket",
+              "gs://demos-vertex-ai-aip-r-test20221109165545/pipeline_root/r-test",
+              "--executor_input",
+              "{{$}}",
+              "--resource_name_output_artifact_uri",
+              "{{$.outputs.artifacts['model'].uri}}",
+              "--init.command",
+              "{{$.inputs.parameters['command']}}"
+            ],
+            "command": [
+              "python3",
+              "-m",
+              "google_cloud_pipeline_components.container.aiplatform.remote_runner",
+              "--cls_name",
+              "CustomContainerTrainingJob",
+              "--method_name",
+              "run"
+            ],
+            "image": "gcr.io/ml-pipeline/google-cloud-pipeline-components:1.0.26"
+          }
+        }
+      }
+    },
+    "pipelineInfo": {
+      "name": "r-test-pipeline"
+    },
+    "root": {
+      "dag": {
+        "tasks": {
+          "customcontainertrainingjob-run": {
+            "cachingOptions": {},
+            "componentRef": {
+              "name": "comp-customcontainertrainingjob-run"
+            },
+            "inputs": {
+              "parameters": {
+                "command": {
+                  "runtimeValue": {
+                    "constantValue": {
+                      "stringValue": "[\"RScript\", \"print.R\"]"
+                    }
+                  }
+                }
+              }
+            },
+            "taskInfo": {
+              "name": "Run R script to test to printing"
+            }
+          }
+        }
+      }
+    },
+    "schemaVersion": "2.0.0",
+    "sdkVersion": "kfp-1.8.14"
+  },
+  "runtimeConfig": {
+    "gcsOutputDirectory": "gs://demos-vertex-ai-aip-r-test20221109165545/pipeline_root/r-test"
+  }
+}
