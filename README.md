@@ -9,10 +9,10 @@ To run the example notebooks in this repository, you will need a GCP project wit
 To create a notebook instance: 
 
 1.  Navigate to [Vertex Workbench User Managed Notebooks](https://console.cloud.google.com/ai-platform/notebooks) and create a python notebook instance (or use the cloud shell command below)
-    2.1.  At the top of the screen, click "NEW NOTEBOOK"
-    2.2.  Use the first option for a notebook "Python 3"
-    2.3.  For the Region, select the first option "us-central1" 
-    2.4.  Click "Create"
+    2.1.  At the top of the screen, click "NEW NOTEBOOK"  
+    2.2.  Use the first option for a notebook "Python 3"  
+    2.3.  For the Region, select the first option "us-central1"  
+    2.4.  Click "Create"  
     ```sh
     gcloud notebooks instances create vertex-pipelines-r \
         --vm-image-project=deeplearning-platform-release \
