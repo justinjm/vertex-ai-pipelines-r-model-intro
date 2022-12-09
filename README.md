@@ -33,8 +33,12 @@ To create a notebook instance:
 ## Contents 
 
 * [01-run-r-script](01-run-r-script)
+* [02-r-script-params](02-r-script-params)
+* [03-r-model-online-batch](03-r-model-online-batch)
 
+## Acknowledgements
 
+Original author and source of (most of) the code in this repository: Rajesh Thallum [RajeshThallam/vertex-ai-labs](https://github.com/RajeshThallam/vertex-ai-labs)
 
 ## References 
 
